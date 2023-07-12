@@ -49,7 +49,7 @@ func dockerSaveImage(imageName, tarName string) {
 
 // 解压 docker 镜像到指定目录
 func decompressionDockerImagesTar(tarName, dir string) {
-	os.Mkdir(dir, 0777)
+	_ = os.Mkdir(dir, 0777)
 
 	command := fmt.Sprintf("tar -xf %v -C %v > /dev/null ", tarName, dir)
 	err := execCommand(command)
