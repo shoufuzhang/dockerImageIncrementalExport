@@ -130,6 +130,11 @@ func diff(oldImage, newImage string) {
 		log.Printf("打包失败%v", err)
 	} else {
 		log.Printf("docker load 差异性文件内容为 %v-upgrade\n", newImageTarName)
+		//如果打包成功，则删除中间产物
+		_ = os.RemoveAll("new")
+		_ = os.RemoveAll("old")
+		_ = os.RemoveAll(oldImageTarName)
+		_ = os.RemoveAll(newImageTarName)
 	}
 }
 
